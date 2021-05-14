@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2021 at 07:12 AM
+-- Generation Time: May 14, 2021 at 07:33 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -92,7 +92,7 @@ CREATE TABLE `attribute_option` (
 --
 
 INSERT INTO `attribute_option` (`optionId`, `name`, `attributeId`, `sortOrder`) VALUES
-(1, 'Red', 1, 1),
+(1, 'Pink', 1, 1),
 (2, 'Apple', 2, 2),
 (3, 'Samsung', 2, 3),
 (4, 'Yellow', 1, 2),
@@ -123,7 +123,9 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cartId`, `customerId`, `sessionId`, `total`, `discount`, `paymentMethodId`, `shippingMethodId`, `shippingAmount`, `createdDate`) VALUES
 (1, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 10:39:10'),
-(3, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 10:40:23');
+(3, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 10:40:23'),
+(4, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 11:05:33'),
+(5, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 13:39:25');
 
 -- --------------------------------------------------------
 
@@ -547,6 +549,46 @@ INSERT INTO `product_group_price` (`entityId`, `productId`, `customerGroupId`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `question`
+--
+
+CREATE TABLE `question` (
+  `questionId` int(11) NOT NULL,
+  `question` varchar(40) NOT NULL,
+  `status` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`questionId`, `question`, `status`) VALUES
+(1, 'Where is Moon?', 'Enable'),
+(3, 'Where is India?', 'Enable');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_option`
+--
+
+CREATE TABLE `question_option` (
+  `choiceId` int(11) NOT NULL,
+  `questionId` int(11) NOT NULL,
+  `is_right_choice` tinyint(1) DEFAULT 0,
+  `choice` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question_option`
+--
+
+INSERT INTO `question_option` (`choiceId`, `questionId`, `is_right_choice`, `choice`) VALUES
+(6, 1, 1, 'Earth');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shipment`
 --
 
@@ -697,6 +739,19 @@ ALTER TABLE `product_group_price`
   ADD PRIMARY KEY (`entityId`);
 
 --
+-- Indexes for table `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`questionId`);
+
+--
+-- Indexes for table `question_option`
+--
+ALTER TABLE `question_option`
+  ADD PRIMARY KEY (`choiceId`),
+  ADD KEY `questionId` (`questionId`);
+
+--
 -- Indexes for table `shipment`
 --
 ALTER TABLE `shipment`
@@ -722,13 +777,13 @@ ALTER TABLE `attribute`
 -- AUTO_INCREMENT for table `attribute_option`
 --
 ALTER TABLE `attribute_option`
-  MODIFY `optionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `optionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cartaddress`
@@ -827,6 +882,18 @@ ALTER TABLE `product_group_price`
   MODIFY `entityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `question`
+--
+ALTER TABLE `question`
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `question_option`
+--
+ALTER TABLE `question_option`
+  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
@@ -841,6 +908,12 @@ ALTER TABLE `shipment`
 --
 ALTER TABLE `attribute_option`
   ADD CONSTRAINT `attribute_option_ibfk_1` FOREIGN KEY (`attributeId`) REFERENCES `attribute` (`attributeId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `question_option`
+--
+ALTER TABLE `question_option`
+  ADD CONSTRAINT `question_option_ibfk_1` FOREIGN KEY (`questionId`) REFERENCES `question` (`questionId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

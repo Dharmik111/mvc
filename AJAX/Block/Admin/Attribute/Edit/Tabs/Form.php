@@ -31,10 +31,10 @@ class Form extends \Block\Core\Template{
     public function getTitle()
     {
         $id = $this->getRequest()->getGet('attributeId');
-        if ($id) {
+        if (!$id) {
             return "Add Attribute";
         }
-        return "Update Attributr";
+        return "Update Attribute";
     }
     
 }

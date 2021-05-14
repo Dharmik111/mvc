@@ -46,7 +46,7 @@ class Grid extends Template
                     }
                 }
             }
-            $query = substr($query, 0, -4);
+            echo $query = substr($query, 0, -4);die;
         }
         // print_r($query);die;
         $collection =  $collection->fetchAll($query);

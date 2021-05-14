@@ -6,14 +6,14 @@ $collection = $this->getCollection();
 $actions = $this->getActions();
 ?>
 
-<h1><?php echo $this->getTitle(); ?></h1>
-<form id="form" action="<?php echo $this->getFormUrl('filter', null, [], true); ?>" method="POST">
+<h1 align="center"><?php echo $this->getTitle(); ?></h1>
+<form id="form" action="<?php echo $this->getFormUrl('filter', null, [], true); ?>" method="POST" align="center">
     <?php if ($buttons) : ?>
         <?php foreach ($buttons as $key => $button) : ?>
             <input type="button" class="<?= $button['class'] ?>" value="<?= $button['label'] ?>" onclick="mage.setUrl(<?= $this->getButtonUrl($button['method']); ?>);">
         <?php endforeach; ?>
     <?php endif; ?>
-    <table class="grid">
+    <table class="grid"  border="3px" cellpadding="10px" align="center" width="70%" class="table table-striped" style="border-collapse:collapse" >
         <?php if ($columns) : ?>
             <tr style="text-align:center" class="gridtr">
                 <?php foreach ($columns as $key => $column) : ?>

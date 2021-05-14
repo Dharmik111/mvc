@@ -1,5 +1,4 @@
 <?php $attribute = $this->getAttribute();
-$options = $attribute->getStatusOption();
 ?>
 
 

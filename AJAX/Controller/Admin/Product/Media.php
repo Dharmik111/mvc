@@ -95,26 +95,4 @@ class Media extends \Controller\Core\Admin
         $editBlock = $editBlock->setTab($leftBlock)->setTableRow($media)->toHtml();
         $this->makeResponse($editBlock);
     }
-
-    // public function formAction()
-    // {
-    //     try {
-    //         $formBlock = \Mage::getBlock("Block\Admin\Product\Edit");
-
-    //         $layout = $this->getLayout();
-
-    //         $content = $layout->getChild('content');
-    //         $content->addChild($formBlock);
-    //         $layout->setTemplate("View/core/layout/three_column.php");
-
-    //         $left = $layout->getChild('left');
-    //         $leftContent = \Mage::getBlock('Block\Admin\Product\Edit\Tabs');
-    //         $left->addChild($leftContent);
-
-    //         echo $layout->toHtml();
-    //     } catch (\Exception $e) {
-    //         $this->getMessage()->setFailure($e->getMessage());
-    //         $this->redirect('grid');
-    //     }
-    // }
 }

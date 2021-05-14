@@ -3,19 +3,9 @@
 namespace Model;
 class Attribute extends \Model\Core\Table{
 
-    const STATUS_NULL = 1;
-    const  STATUS_NOT_NULL = 0;
-
     public function __construct(){
         $this->setTableName("attribute");
         $this->setPrimaryKey("attributeId");
-    }
-
-    public function getStatusOption(){
-        return [
-            self::STATUS_NULL => "Null",
-            self::STATUS_NOT_NULL => "Not Null",
-        ];
     }
 
     public function getBackendTypeOption(){

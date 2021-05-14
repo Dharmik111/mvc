@@ -111,4 +111,3 @@ class Attribute extends \Controller\Core\Admin
         $this->makeResponse($grid);
     }
 }
-// ALTER TABLE table_name DROP COLUMN column_name; table_name.
