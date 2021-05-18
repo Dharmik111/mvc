@@ -114,7 +114,7 @@ $shippingAddress = $this->getShippingAddress();
         </tr>
         <tr>
             <th class="gridtd">Final Price</th>
-            <td class="gridtd"><?= $cart->getFinalPrice($cartItems); ?></td>
+            <td class="gridtd"><?= $cart->getFinalPrice($cartItems)+$shipmentMethod->amount; ?></td>
         </tr>
     </table>
 </center>

@@ -57,7 +57,6 @@ class Question extends \Controller\Core\Admin{
     {
         try {
             $id=(int)$this->getRequest()->getGet('questionId');
-            // print_r($id);die;
             $question=\Mage::getModel("Model\Question");
             $question->load($id);
             if($question->questionId != $id){
@@ -104,7 +103,7 @@ class Question extends \Controller\Core\Admin{
 
     public function filterAction()
     {
-        $this->getFilter()->setFilters($this->getRequest()->getPost('filed'));
+        $this->getFilter()->setFilters($this->getRequest()->getPost('field'));
         $grid=\Mage::getBlock("Block\Admin\Question\Grid")->toHtml();
         $this->makeResponse($grid);
     }

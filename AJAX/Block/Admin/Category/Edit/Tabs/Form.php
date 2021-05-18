@@ -86,10 +86,10 @@ class Form extends \Block\Core\Template
         return $this->categoryOptions;
     }
 
-    public function getName()
-    {
-        $categoryOptions = $this->getCategoryOptions();
-    }
+    // // public function getName()
+    // {
+    //     return $this->getCategoryOptions();
+    // }
 
     public function getTitle()
     {

@@ -11,6 +11,39 @@ class Grid extends \Block\Core\Grid
         $this->setCollection('Model\Category');
     }
 
+    public function setCollection($collection){
+        $collection = \Mage::getModel($collection);
+        $query = "SELECT * FROM `category`";
+        if($this->getFilter()->hasFilters()){
+            $query .= " WHERE ";
+            foreach($this->getFilter()->getFilters() as $type=>$filter){
+                if($type == 'varchar'){
+                    foreach($filter as $key=>$value){
+                        $query .= "{$key} LIKE '%{$value}%' && ";
+                    }
+                }
+                if ($type == 'number') {
+                    foreach ($filter as $key => $value) {
+                        $query .= "`{$key}` LIKE '%{$value}%' && ";
+                    }
+                }
+            }
+
+        $query = substr($query, 0, -4);
+
+        }
+        $collection =  $collection->fetchAll($query);
+        if($collection){
+            $this->collection = $collection->getData();
+        }
+        if($collection){
+            foreach($collection->getData() as $key=>$value){
+                $value->name = $this->getName($value->pathId);
+            }
+        }
+        return $this;
+    }
+
     public function prepareColumn()
     {
         $this->addColumn('categoryId', [
@@ -19,7 +52,7 @@ class Grid extends \Block\Core\Grid
             'type' => 'text',
         ]);
         $this->addColumn('name', [
-            'field' => 'name',
+            'method' => 'getName',
             'label' => 'Name',
             'type' => 'text',
         ]);
@@ -43,5 +76,20 @@ class Grid extends \Block\Core\Grid
     public function getTitle()
     {
         return "Manage Category";
+    }
+
+    public function getName($pathId)
+    {
+        $pathIds = explode("=",$pathId);
+        foreach ($pathIds as $key => $id){
+            $name[] = $this->getNameById($id);
+        }
+        return implode("/",$name);
+    }
+
+    public function getNameById($id){
+        $query="SELECT `name` FROM `category` WHERE `categoryId`={$id};";
+        $categoryModel=\Mage::getModel("Model\Category")->fetchRow($query);
+        return $categoryModel->name;
     }
 }

@@ -7,11 +7,11 @@ $option = $question->getOptions();
     <input type="button" id="update" name="update" value="Update" onclick="mage.setForm();" class="btn btn-success">
     <input type="button" name="addOption" value="Add Option" onclick="addRow();" class="btn btn-primary">
     <table id="existingOption" class="grid">
-        <tbody>
+        <tbody class="xyz">
             <?php if ($option) : ?>
                 <?php foreach ($option as $key => $value) : ?>
-                    <tr class="gridtr">
-                        <td class="gridtd"><input type="text" name="exist[choice][<?php echo $value->choiceId; ?>]" value="<?php echo $value->choice ?>"></td>
+                    <tr class="gridtr abc">
+                        <td class="gridtd"><input type="text" name="exist[<?php echo $value->choiceId; ?>][choice]" value="<?php echo $value->choice ?>"></td>
                         <td class="gridtd"><input type="radio" name="exist[answer]" value="<?php echo $value->choiceId ?>" <?php if ($value->is_right_choice) {
                                                                                                                                                         echo "checked";
                                                                                                                                                     } ?>></td>
@@ -25,9 +25,8 @@ $option = $question->getOptions();
 <div style="display:none">
     <table id="newOption">
         <tbody>
-            <tr class="gridtr">
+            <tr class="gridtr abc">
                 <td class="gridtd"><input type="text" name="new[choice][]"></td>
-                <!-- <td class="gridtd newOption"><input type="radio" name="exist[answer][]"></td> -->
                 <td class="gridtd"><input type="button" class="btn btn-danger" name="new[removeOption][]" value="Remove Option" onclick="removeRow(this);"></td>
             </tr>
         </tbody>
@@ -36,14 +35,18 @@ $option = $question->getOptions();
 
 <script>
     function addRow() {
+        var bod=document.getElementsByClassName("abc").length;
+        if(bod<=4){
         var newOptionTable = document.getElementById('newOption');
         var existingOptionTable = document.getElementById('existingOption').children[0];
-        existingOptionTable.prepend(newOptionTable.children[0].children[0].cloneNode(true));
+        existingOptionTable.prepend(newOptionTable.children[0].children[0].cloneNode(true));}
     }
 
     function removeRow(button) {
+        var bod=document.getElementsByClassName("abc").length;
+        if(bod>2 && bod<=4){
         var objTr = button.parentElement.parentElement;
-        objTr.remove();
+        objTr.remove();}
         $form = document.getElementById('form');
         $form = mage.setForm();
     }

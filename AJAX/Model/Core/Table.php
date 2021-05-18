@@ -145,7 +145,7 @@ class Table{
     }
     public function delete($deletequery = null){
         if(!$deletequery){
-            $deletequery = "DELETE FROM `{$this->getTableName()}` WHERE `{$this->getPrimaryKey()}` = {$this->originalData[$this->getPrimaryKey()]}";
+           $deletequery = "DELETE FROM `{$this->getTableName()}` WHERE `{$this->getPrimaryKey()}` = {$this->originalData[$this->getPrimaryKey()]}";
         }
         $this->getAdapter()->delete($deletequery);
         return true;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 07:33 PM
+-- Generation Time: May 18, 2021 at 02:13 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -125,7 +125,15 @@ INSERT INTO `cart` (`cartId`, `customerId`, `sessionId`, `total`, `discount`, `p
 (1, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 10:39:10'),
 (3, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 10:40:23'),
 (4, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 11:05:33'),
-(5, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 13:39:25');
+(5, 0, 0, '0', '0', 0, 0, 0, '2021-05-13 13:39:25'),
+(6, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:09:39'),
+(7, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:19:02'),
+(8, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:20:33'),
+(9, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:57:22'),
+(10, 3, 0, '0', '0', 0, 0, 0, '2021-05-18 11:33:03'),
+(12, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 11:54:28'),
+(14, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 11:55:32'),
+(15, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 12:11:58');
 
 -- --------------------------------------------------------
 
@@ -173,23 +181,22 @@ CREATE TABLE `category` (
   `name` varchar(40) NOT NULL,
   `parentId` int(11) DEFAULT NULL,
   `pathId` varchar(40) DEFAULT NULL,
-  `status` varchar(40) NOT NULL,
-  `Beds` varchar(255) DEFAULT NULL
+  `status` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`categoryId`, `name`, `parentId`, `pathId`, `status`, `Beds`) VALUES
-(1, 'Home', 0, '1', 'Enable', NULL),
-(2, 'BedRoom', 1, '1=2', 'Enable', NULL),
-(3, 'Beds', 1, '1=3', 'Enable', NULL),
-(4, 'LightBulb', 2, '1=2=4', 'Enable', NULL),
-(5, 'Cover', 3, '1=3=5', 'Enable', NULL),
-(10, 'Kaborad', 2, '1=2=10', 'Enable', NULL),
-(11, 'Chadar', 5, '1=3=5=11', 'Enable', NULL),
-(15, 'Ausiku', 11, '1=3=5=11=15', 'Enable', NULL);
+INSERT INTO `category` (`categoryId`, `name`, `parentId`, `pathId`, `status`) VALUES
+(1, 'Home', 0, '1', 'Enable'),
+(2, 'BedRoom', 1, '1=2', 'Enable'),
+(3, 'Beds', 1, '1=3', 'Enable'),
+(4, 'LightBulb', 2, '1=2=4', 'Enable'),
+(5, 'Cover', 3, '1=3=5', 'Enable'),
+(10, 'Kaborad', 2, '1=2=10', 'Enable'),
+(11, 'Chadar', 5, '1=3=5=11', 'Enable'),
+(15, 'Ausiku', 11, '1=3=5=11=15', 'Enable');
 
 -- --------------------------------------------------------
 
@@ -323,7 +330,7 @@ INSERT INTO `customer_address` (`addressId`, `customerId`, `address`, `city`, `s
 (13, 11, 'Modhera Society', 'Ahemadabad', 'Gujarat', 380001, 'India', 'Billing'),
 (14, 11, 'Modhera Society', 'Ahemadabad', 'Gujarat', 380001, 'India', 'Shipping'),
 (15, 12, 'Europe Street No9', 'Berlight', 'cvx', 923, 'Europe', 'Billing'),
-(16, 12, 'Europe Street No9', 'Berlight', 'cvx', 923, 'Europe', 'Shipping'),
+(16, 12, 'Europe Street No9', 'Berlight', 'cvx', 0, 'Europe', 'Shipping'),
 (42, 19, 'Powder Gali', 'Mumbai', 'Maharrashatra', 394033, 'India', 'Billing'),
 (43, 19, 'malad', 'Mumbai', 'Maharrashatra', 394033, 'India', 'Shipping'),
 (47, 21, 'Zonn', 'Valley', 'Scotland', 9299, 'Scoty', 'Billing'),
@@ -381,7 +388,9 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`orderId`, `sessionId`, `customerId`, `total`, `discount`, `paymentMethodId`, `shippingMethodId`, `shippingAmount`, `createdDate`) VALUES
-(2, 0, 3, '0', '0', 1, 1, 100, '2021-05-13 10:39:53');
+(2, 0, 3, '0', '0', 1, 1, 100, '2021-05-13 10:39:53'),
+(11, 0, 12, '0', '0', 2, 1, 100, '2021-05-18 11:33:47'),
+(13, 0, 11, '0', '0', 2, 1, 100, '2021-05-18 11:55:10');
 
 -- --------------------------------------------------------
 
@@ -408,7 +417,11 @@ CREATE TABLE `orderaddress` (
 
 INSERT INTO `orderaddress` (`orderAddressId`, `orderId`, `addressId`, `addressType`, `address`, `city`, `state`, `country`, `zipCode`, `sameAsBilling`) VALUES
 (1, 2, 0, 'billing', 'London', 'London', 'Ukm', 'Uknn', 10, 0),
-(2, 2, 0, 'shipping', 'London', 'London', 'Ukm', 'Uknn', 10, 0);
+(2, 2, 0, 'shipping', 'London', 'London', 'Ukm', 'Uknn', 10, 0),
+(3, 11, 0, 'billing', 'Europe Street No9', 'Berlight', 'cvx', 'Europe', 923, 0),
+(4, 11, 0, 'shipping', 'Europe Street No9', 'Berlight', 'cvx', 'Europe', 923, 0),
+(5, 13, 0, 'billing', 'Modhera Society', 'Ahemadabad', 'Gujarat', 'India', 380001, 0),
+(6, 13, 0, 'shipping', 'Modhera Society', 'Ahemadabad', 'Gujarat', 'India', 380001, 0);
 
 -- --------------------------------------------------------
 
@@ -432,7 +445,9 @@ CREATE TABLE `order_item` (
 --
 
 INSERT INTO `order_item` (`orderItemId`, `orderId`, `productId`, `quantity`, `basePrice`, `price`, `discount`, `createdDate`) VALUES
-(1, 2, 2, 2, 95, 190, 2, '2021-05-13 10:39:54');
+(1, 2, 2, 2, 95, 190, 2, '2021-05-13 10:39:54'),
+(2, 11, 98, 1, 10000, 10000, 1000, '2021-05-18 11:33:48'),
+(3, 13, 100, 1, 60000, 60000, 2000, '2021-05-18 11:55:11');
 
 -- --------------------------------------------------------
 
@@ -563,8 +578,8 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`questionId`, `question`, `status`) VALUES
-(1, 'Where is Moon?', 'Enable'),
-(3, 'Where is India?', 'Enable');
+(1, 'Question', 'Enable'),
+(2, 'finding', 'Enable');
 
 -- --------------------------------------------------------
 
@@ -584,7 +599,14 @@ CREATE TABLE `question_option` (
 --
 
 INSERT INTO `question_option` (`choiceId`, `questionId`, `is_right_choice`, `choice`) VALUES
-(6, 1, 1, 'Earth');
+(1, 1, 0, 'a'),
+(2, 1, 0, 'b'),
+(3, 1, 1, 'c'),
+(4, 1, 0, 'd'),
+(5, 2, 0, 'w'),
+(6, 2, 0, 'x'),
+(7, 2, 1, 'y'),
+(8, 2, 0, 'z');
 
 -- --------------------------------------------------------
 
@@ -682,7 +704,8 @@ ALTER TABLE `config_group`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customerId`);
+  ADD PRIMARY KEY (`customerId`),
+  ADD KEY `groupId` (`groupId`);
 
 --
 -- Indexes for table `customer_address`
@@ -783,25 +806,25 @@ ALTER TABLE `attribute_option`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cartaddress`
 --
 ALTER TABLE `cartaddress`
-  MODIFY `cartAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cartAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `cms_page`
@@ -843,19 +866,19 @@ ALTER TABLE `customer_group`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orderaddress`
 --
 ALTER TABLE `orderaddress`
-  MODIFY `orderAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `orderAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `orderItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -885,13 +908,13 @@ ALTER TABLE `product_group_price`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `question_option`
 --
 ALTER TABLE `question_option`
-  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `shipment`
@@ -908,6 +931,12 @@ ALTER TABLE `shipment`
 --
 ALTER TABLE `attribute_option`
   ADD CONSTRAINT `attribute_option_ibfk_1` FOREIGN KEY (`attributeId`) REFERENCES `attribute` (`attributeId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `customer_group` (`groupId`);
 
 --
 -- Constraints for table `question_option`
