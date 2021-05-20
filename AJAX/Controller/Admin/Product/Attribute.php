@@ -15,10 +15,6 @@ class Attribute extends \Controller\Core\Admin
         }else {
             $this->getMessage()->setFailure('Unable to update attribute');
         }
-        $product = \Mage::getModel('Model\Product');
-        $leftBlock = \Mage::getBlock('Block\Admin\Product\Edit\Tabs');
-        $editBlock = \Mage::getBlock('Block\Admin\Product\Edit');
-        $editBlock = $editBlock->setTab($leftBlock)->setTableRow($product)->toHtml();
-        $this->makeResponse($editBlock);
+        $this->redirect('grid', 'product');
     }
 }

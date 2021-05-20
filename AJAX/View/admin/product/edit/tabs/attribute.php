@@ -7,7 +7,7 @@
             <div class="col m-0 p-1">
                 <?php if (count($attributes)) : ?>
                     <?php foreach ($attributes as $key => $attribute) : ?>
-                        <?php if ($attribute->inputType) : // == 'select') : 
+                        <?php if ($attribute->inputType) : 
                         ?>
                             <div class="row m-0 p-1">
                                 <div class="col-4 m-0 p-1">
