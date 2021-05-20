@@ -1,37 +1,32 @@
-  
 <?php $cmsPages = $this->getCmsPages(); ?>
+<?php //print_r($cmsPages->content);die;?>
 <?php $options = $cmsPages->getStatusOption(); ?>
 
-<h1>CMS Pages Form</h1>
-<form id="form" action='<?php echo $this->getUrl()->getUrl('save', null, ['pageId' => $cmsPages->pageId], false); ?>' method='POST'>
+<h1><?= $this->getTitle();?></h1>
+<form id="form" action='<?php echo $this->getUrl()->getUrl('save', null, ['pageId' => $cmsPages->pageId], false)?>' method='POST'>
     <table>
-        <tbody>
-            <tr>
-                <td>
-                    Title:
-                </td>
-                <td><input name='cmsPages[title]' type='text' value='<?php echo $cmsPages->title; ?>'>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Identifier:
-                </td>
-                <td><input name='cmsPages[identifier]' type='text' value='<?php echo $cmsPages->identifier; ?>'>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Content:
-                </td>
-                <td>
-                <textarea name="cmsPages[content]" id="cms"><?php echo $cmsPages->content;?></textarea>
-                <script>
-                    CKEDITOR.replace('cmsPages[content]');
-                </script><br><br>
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td>
+                Title:
+            </td>
+            <td>
+                <input name='cmsPages[title]' type='text' value='<?php echo $cmsPages->title; ?>'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Identifier:
+            </td>
+            <td>
+                <input name='cmsPages[identifier]' type='text' value='<?php echo $cmsPages->identifier; ?>'>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Content</label></td>
+            <td>
+            <input name='cmsPages[content]' type='text' value='<?php print_r($cmsPages->content); ?>'><br><br>
+            </td>
+  	    </tr>
         <tr>
             <td>
                 Status:
@@ -47,9 +42,12 @@
         <tr>
             <td></td>
             <td>
-                <input class="btn btn-primary" type='button' onclick="mage.setCms().setForm()" name='submit' value='Submit'>
+                <input type='button' class="btn btn-success" onclick="mage.setCms()" name='submit' value='Submit'>
             </td>
         </tr>
-        </tbody>
     </table>
 </form>
+<script></script>
+<script>
+  CKEDITOR.replace('cmsPages[content]');
+</script>
