@@ -36,9 +36,7 @@ class Grid extends \Block\Core\Grid{
                     }
                 }
             }
-
             $query = substr($query, 0, -4);
-
         }
         $query.= "GROUP BY  q.`question`";
         $collection =  $collection->fetchAll($query);
@@ -48,6 +46,10 @@ class Grid extends \Block\Core\Grid{
         if($collection){
             foreach($collection->getData() as $key=>$value){
                 $value->is_right_choice = $this->getRightAnswer($value->questionId);
+                foreach(explode(",",$value->choice) as $k =>$v){
+                    $temp='option'.($k+1);
+                    $value->$temp=$v;
+                }
             }
         }
         return $this;
@@ -59,7 +61,8 @@ class Grid extends \Block\Core\Grid{
                     AND `is_right_choice`= 1";
 
         $model = \Mage::getModel('Model\Question\Option')->fetchRow($query);
-       return $model->choice;
+        if($model!=NULL){
+        return $model->choice;}
     }
 
     public function prepareColumn()
@@ -74,9 +77,24 @@ class Grid extends \Block\Core\Grid{
             'label'=>'Status',
             'type'=>'tinyint'
         ]);
-        $this->addColumn('choice',[
-            'field'=>'choice',
-            'label'=>'Options',
+        $this->addColumn('option1',[
+            'field'=>'option1',
+            'label'=>'Option1',
+            'type'=>'varchar'
+        ]);
+        $this->addColumn('option2',[
+            'field'=>'option2',
+            'label'=>'Option2',
+            'type'=>'varchar'
+        ]);
+        $this->addColumn('option3',[
+            'field'=>'option3',
+            'label'=>'Option3',
+            'type'=>'varchar'
+        ]);
+        $this->addColumn('option4',[
+            'field'=>'option4',
+            'label'=>'Option4',
             'type'=>'varchar'
         ]);
         $this->addColumn('is_right_choice',[
@@ -91,4 +109,3 @@ class Grid extends \Block\Core\Grid{
         return "Manage Question";
     }
 }
-?>

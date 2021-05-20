@@ -8,7 +8,7 @@ $option=$question->getStatusOption();
     <table class="grid">
         <tr class="gridtr">
             <td class="gridtd">Enter Question</td><br><br>
-            <td class="gridtd"><input type="textarea" height="20" width="30" name=question[question] value="<?php echo $question->question ?>"></td>
+            <td class="gridtd"><textarea height="50" width="80" name=question[question] ><?php echo $question->question;?></textarea></td>
         </tr>
         <tr class="gridtr">
             <td class="gridtd">Status</td><br><br>

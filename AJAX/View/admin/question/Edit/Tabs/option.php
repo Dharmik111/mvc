@@ -44,7 +44,8 @@ $option = $question->getOptions();
 
     function removeRow(button) {
         var bod=document.getElementsByClassName("abc").length;
-        if(bod>2 && bod<=4){
+        console.log(bod);
+        if(bod>3 && bod<=5){
         var objTr = button.parentElement.parentElement;
         objTr.remove();}
         $form = document.getElementById('form');

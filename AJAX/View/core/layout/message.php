@@ -1,3 +1,4 @@
+<center>
 <div>
     <?php 
         $message = $this->getMessage();
@@ -11,3 +12,4 @@
         }
     ?>
 </div>
+</center>

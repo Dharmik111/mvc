@@ -27,11 +27,11 @@ class Attribute extends \Block\Core\Template
 	}
 
 	public function getAttributeOption($attributeId) {
-		$attributeOptionModel = \Mage::getModel('Model\Attribute\Option');
-		$query = "SELECT attribute_option.* , attribute.code FROM attribute_option LEFT JOIN attribute ON attribute_option.attributeId = attribute.attributeId WHERE attribute.attributeId = {$attributeId} ORDER BY `sortOrder`";
-		$attributeOptionModel=$attributeOptionModel->fetchAll($query);
-		if($attributeOptionModel){
-			return $attributeOptionModel;
+		$attributeOption = \Mage::getModel('Model\Attribute\Option');
+		$query = "SELECT attribute_option.* , attribute.`code` FROM `attribute_option` LEFT JOIN `attribute` ON attribute_option.`attributeId` = attribute.`attributeId` WHERE attribute.`attributeId` = '{$attributeId}' ORDER BY `sortOrder` ASC";
+		$attributeOption = $attributeOption->fetchAll($query);
+		if ($attributeOption) {
+			return $attributeOption->getData();
 		}
 		return null;
 	}

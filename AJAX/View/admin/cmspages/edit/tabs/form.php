@@ -24,7 +24,10 @@
                     Content:
                 </td>
                 <td>
-                    <input name='cmsPages[content]' type='text' value='<?php echo $cmsPages->content; ?>'><br><br>
+                <textarea name="cmsPages[content]" id="cms"><?php echo $cmsPages->content;?></textarea>
+                <script>
+                    CKEDITOR.replace('cmsPages[content]');
+                </script><br><br>
                 </td>
             </tr>
         </tbody>
@@ -49,7 +52,3 @@
         </tbody>
     </table>
 </form>
-
-<script>
-    CKEDITOR.replace('cmsPages[content]');
-</script>

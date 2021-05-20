@@ -17,6 +17,7 @@ class Option extends \Controller\Core\Admin{
                 $ids[]=$value->choiceId;
             }
         }
+
         if ($exist = $this->getRequest()->getPost('exist')) {
             foreach ($exist as $key => $value) {
                 if (gettype($key) == "integer") {

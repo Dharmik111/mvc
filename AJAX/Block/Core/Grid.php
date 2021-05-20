@@ -48,7 +48,6 @@ class Grid extends Template
             }
         $query = substr($query, 0, -4);
         }
-        // print_r($query);die;
         $collection =  $collection->fetchAll($query);
         if ($collection) {
             $this->collection = $collection->getData();

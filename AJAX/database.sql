@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 02:13 PM
+-- Generation Time: May 20, 2021 at 09:29 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -68,11 +68,7 @@ CREATE TABLE `attribute` (
 --
 
 INSERT INTO `attribute` (`attributeId`, `entityTypeId`, `name`, `code`, `inputType`, `backEndType`, `sortOrder`, `backEndModel`) VALUES
-(1, 'product', 'Color', 'color', 'radio', 'varchar(255)', 1, 'Model/Product'),
-(2, 'product', 'Brand', 'brand', 'checkbox', 'varchar(255)', 2, 'Model/Product'),
-(3, 'product', 'Tv', 'tv', 'select', 'varchar(255)', 3, 'Model/Product'),
-(5, 'product', 'Car', 'car', 'textarea', 'varchar(255)', 6, 'Model/Product'),
-(6, 'product', 'Plane', 'plan', 'text', 'varchar(255)', 7, 'Model/Product');
+(1, 'product', 'Color', 'color', 'select', 'varchar(255)', 1, 'Model/Product');
 
 -- --------------------------------------------------------
 
@@ -92,12 +88,8 @@ CREATE TABLE `attribute_option` (
 --
 
 INSERT INTO `attribute_option` (`optionId`, `name`, `attributeId`, `sortOrder`) VALUES
-(1, 'Pink', 1, 1),
-(2, 'Apple', 2, 2),
-(3, 'Samsung', 2, 3),
-(4, 'Yellow', 1, 2),
-(5, 'mi', 3, 5),
-(6, 'redmi', 3, 6);
+(1, 'Yellow', 1, 1),
+(2, 'white', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -133,7 +125,8 @@ INSERT INTO `cart` (`cartId`, `customerId`, `sessionId`, `total`, `discount`, `p
 (10, 3, 0, '0', '0', 0, 0, 0, '2021-05-18 11:33:03'),
 (12, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 11:54:28'),
 (14, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 11:55:32'),
-(15, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 12:11:58');
+(15, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 12:11:58'),
+(16, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 17:47:32');
 
 -- --------------------------------------------------------
 
@@ -491,28 +484,23 @@ CREATE TABLE `product` (
   `description` varchar(40) NOT NULL,
   `status` varchar(40) NOT NULL,
   `createdDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `updateDate` datetime DEFAULT NULL,
-  `Color` varchar(255) DEFAULT NULL,
-  `Brand` varchar(255) DEFAULT NULL,
-  `Tv` varchar(255) DEFAULT NULL,
-  `Car` varchar(255) DEFAULT NULL,
-  `Plan` varchar(255) DEFAULT NULL
+  `Color` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`productId`, `sku`, `name`, `price`, `discount`, `quantity`, `description`, `status`, `createdDate`, `updateDate`, `Color`, `Brand`, `Tv`, `Car`, `Plan`) VALUES
-(2, 's12', 'Biscuit', 95, 2, 200, 'very good', 'Enable', '2021-02-20 22:36:31', '0000-00-00 00:00:00', 'Yellow', 'Samsung', 'redmi', 'Lambergini', ''),
-(93, 's15', 'Tshirt', 400, 20, 1, 'XXL', 'Enable', '2021-03-18 17:02:43', NULL, NULL, NULL, NULL, NULL, NULL),
-(96, 's16', 'Shoes', 900, 10, 1, 'Size-10', 'Enable', '2021-03-22 13:51:56', NULL, NULL, NULL, NULL, NULL, NULL),
-(97, 'A10', 'Bats', 2000, 100, 1, 'Cricket', 'Enable', '2021-03-26 23:29:18', NULL, NULL, NULL, NULL, NULL, NULL),
-(98, 'B1', 'FootBall', 10000, 1000, 1, 'Playing Match', 'Enable', '2021-03-29 23:49:16', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL),
-(99, 'c3', 'Mobile', 15000, 1000, 1, 'Enjoyment', 'Enable', '2021-03-29 23:50:02', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL),
-(100, 'e4', 'Laptop', 60000, 2000, 1, 'Coding Gaming', 'Enable', '2021-03-29 23:50:45', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL),
-(103, 'f10', 'sound ', 1200, 20, 1, 'hellooo', 'Enable', '2021-04-01 11:57:08', NULL, NULL, NULL, NULL, NULL, NULL),
-(106, 'j14', 'Powerbank', 900, 20, 1, 'For Charging', 'Enable', '2021-04-09 14:08:17', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `product` (`productId`, `sku`, `name`, `price`, `discount`, `quantity`, `description`, `status`, `createdDate`, `Color`) VALUES
+(2, 's12', 'Biscuit', 95, 2, 200, 'very good', 'Enable', '2021-02-20 22:36:31', 'white'),
+(93, 's15', 'Tshirt', 400, 20, 1, 'XXL', 'Enable', '2021-03-18 17:02:43', NULL),
+(96, 's16', 'Shoes', 900, 10, 1, 'Size-10', 'Enable', '2021-03-22 13:51:56', NULL),
+(97, 'A10', 'Bats', 2000, 100, 1, 'Cricket', 'Enable', '2021-03-26 23:29:18', NULL),
+(98, 'B1', 'FootBall', 10000, 1000, 1, 'Playing Match', 'Enable', '2021-03-29 23:49:16', NULL),
+(99, 'c3', 'Mobile', 15000, 1000, 1, 'Enjoyment', 'Enable', '2021-03-29 23:50:02', NULL),
+(100, 'e4', 'Laptop', 60000, 2000, 1, 'Coding Gaming', 'Enable', '2021-03-29 23:50:45', NULL),
+(103, 'f10', 'sound ', 1200, 20, 1, 'hellooo', 'Enable', '2021-04-01 11:57:08', NULL),
+(106, 'j14', 'Powerbank', 900, 20, 1, 'For Charging', 'Enable', '2021-04-09 14:08:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -579,7 +567,8 @@ CREATE TABLE `question` (
 
 INSERT INTO `question` (`questionId`, `question`, `status`) VALUES
 (1, 'Question', 'Enable'),
-(2, 'finding', 'Enable');
+(2, 'Finding Value', 'Enable'),
+(8, 'What is No1 Test Team?', 'Enable');
 
 -- --------------------------------------------------------
 
@@ -606,7 +595,11 @@ INSERT INTO `question_option` (`choiceId`, `questionId`, `is_right_choice`, `cho
 (5, 2, 0, 'w'),
 (6, 2, 0, 'x'),
 (7, 2, 1, 'y'),
-(8, 2, 0, 'z');
+(8, 2, 0, 'z'),
+(24, 8, 1, 'India'),
+(25, 8, 0, 'Australlia'),
+(26, 8, 0, 'England'),
+(27, 8, 0, 'New Zeland');
 
 -- --------------------------------------------------------
 
@@ -692,7 +685,8 @@ ALTER TABLE `cms_page`
 -- Indexes for table `config`
 --
 ALTER TABLE `config`
-  ADD PRIMARY KEY (`configId`);
+  ADD PRIMARY KEY (`configId`),
+  ADD KEY `groupId` (`groupId`);
 
 --
 -- Indexes for table `config_group`
@@ -705,13 +699,14 @@ ALTER TABLE `config_group`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customerId`),
-  ADD KEY `groupId` (`groupId`);
+  ADD KEY `customer_ibfk_1` (`groupId`);
 
 --
 -- Indexes for table `customer_address`
 --
 ALTER TABLE `customer_address`
-  ADD PRIMARY KEY (`addressId`);
+  ADD PRIMARY KEY (`addressId`),
+  ADD KEY `customerId` (`customerId`);
 
 --
 -- Indexes for table `customer_group`
@@ -772,7 +767,7 @@ ALTER TABLE `question`
 --
 ALTER TABLE `question_option`
   ADD PRIMARY KEY (`choiceId`),
-  ADD KEY `questionId` (`questionId`);
+  ADD KEY `question_option_ibfk_1` (`questionId`);
 
 --
 -- Indexes for table `shipment`
@@ -794,19 +789,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attribute`
 --
 ALTER TABLE `attribute`
-  MODIFY `attributeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `attributeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `attribute_option`
 --
 ALTER TABLE `attribute_option`
-  MODIFY `optionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `optionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `cartaddress`
@@ -824,7 +819,7 @@ ALTER TABLE `cart_item`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `cms_page`
@@ -908,19 +903,19 @@ ALTER TABLE `product_group_price`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `question_option`
 --
 ALTER TABLE `question_option`
-  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `methodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `methodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -933,16 +928,28 @@ ALTER TABLE `attribute_option`
   ADD CONSTRAINT `attribute_option_ibfk_1` FOREIGN KEY (`attributeId`) REFERENCES `attribute` (`attributeId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `config`
+--
+ALTER TABLE `config`
+  ADD CONSTRAINT `config_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `config_group` (`groupId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `customer_group` (`groupId`);
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `customer_group` (`groupId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_address`
+--
+ALTER TABLE `customer_address`
+  ADD CONSTRAINT `customer_address_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `question_option`
 --
 ALTER TABLE `question_option`
-  ADD CONSTRAINT `question_option_ibfk_1` FOREIGN KEY (`questionId`) REFERENCES `question` (`questionId`);
+  ADD CONSTRAINT `question_option_ibfk_1` FOREIGN KEY (`questionId`) REFERENCES `question` (`questionId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
