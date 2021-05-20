@@ -22,6 +22,8 @@ class CmsPages extends \Controller\Core\Admin{
                 }
             }
             $cmsPages = $cmsPages->setData($this->getRequest()->getPost('cmsPages'));
+            echo "<pre>";
+            print_r($cmsPages);die;
             if($cmsPages->save()){
                 $this->getMessage()->setSuccess("Successfully Update/Insert");
             }else{

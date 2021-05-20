@@ -47,13 +47,13 @@ class Option extends \Controller\Core\Admin{
         }
 
         if(isset($ids)&& $ids){
+            if (empty($_POST)) {
+                $ids = [];
+            }
             $query="DELETE FROM `question_option` WHERE `choiceId` IN (".implode(",",$ids).")";
             $question->delete($query);
         }
-        $left = \Mage::getBlock("Block\Admin\Question\Edit\Tabs");
-        $edit = \Mage::getBlock("Block\Admin\Question\Edit");
-        $edit = $edit->setTab($left)->setTableRow($question)->toHtml();
-        $this->makeResponse($edit);
+        $this->redirect('grid','question');
     }
 }
 ?>

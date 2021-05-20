@@ -1,8 +1,9 @@
+  
 <?php $cmsPages = $this->getCmsPages(); ?>
 <?php $options = $cmsPages->getStatusOption(); ?>
 
 <h1>CMS Pages Form</h1>
-<form id="form" action='<?php echo $this->getUrl()->getUrl('save', null, ['pageId' => $cmsPages->pageId], true); ?>' method='POST'>
+<form id="form" action='<?php echo $this->getUrl()->getUrl('save', null, ['pageId' => $cmsPages->pageId], false); ?>' method='POST'>
     <table>
         <tbody>
             <tr>

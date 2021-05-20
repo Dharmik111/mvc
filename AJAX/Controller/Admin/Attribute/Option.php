@@ -41,13 +41,13 @@ class Option extends \Controller\Core\Admin
         }
 
         if(isset($ids)&& $ids){
+            if (empty($_POST)) {
+                $ids = [];
+            }
             $query="DELETE FROM `attribute_option` WHERE `optionId` IN (".implode(",",$ids).")";
             $attribute->delete($query);
         }
 
-        $left = \Mage::getBlock("Block\Admin\Attribute\Edit\Tabs");
-        $edit = \Mage::getBlock("Block\Admin\Attribute\Edit");
-        $edit = $edit->setTab($left)->setTableRow($attribute)->toHtml();
-        $this->makeResponse($edit);
+        $this->redirect('grid','attribute');
     }
 }

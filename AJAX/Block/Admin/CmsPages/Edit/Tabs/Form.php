@@ -23,6 +23,15 @@ class Form extends \Block\Core\Template{
         }
         return $this->cmsPages;
     }
+
+    public function getTitle()
+    {
+        $id = $this->getRequest()->getGet('pageId');
+        if ($id) {
+            return "Update CmsPages";
+        }
+        return "Add CmsPages";
+    }
 }
 
 ?>
