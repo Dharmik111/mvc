@@ -70,7 +70,7 @@ $group = $this->getGroup();
             <td>
             </td>
             <td>
-                <input type="button" onclick="mage.setForm()" value="Save">
+                <input type="button" onclick="mage.resetParams().setForm('#form')" value="Save">
             </td>
         </tr>
     </table>

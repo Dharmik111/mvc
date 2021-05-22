@@ -4,7 +4,7 @@ $option = $question->getOptions();
 
 ?>
 <form method="POST" id="form" action="<?php echo $this->getUrl()->getUrl('save', 'question\option'); ?>">
-    <input type="button" id="update" name="update" value="Update" onclick="mage.setForm();" class="btn btn-success">
+    <input type="button" id="update" name="update" value="Update" onclick="mage.resetParams().setForm('#form');" class="btn btn-success">
     <input type="button" name="addOption" value="Add Option" onclick="addRow();" class="btn btn-primary">
     <table id="existingOption" class="grid">
         <tbody class="xyz">

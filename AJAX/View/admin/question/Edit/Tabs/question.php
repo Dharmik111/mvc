@@ -23,7 +23,7 @@ $option=$question->getStatusOption();
         <tr class="gridtr">
             <td class="gridtd"></td>
             <td class="gridtd">
-                <input type="button" onclick="mage.setForm()" class="btn btn-success" value="Save">
+                <input type="button" onclick="mage.resetParams().setForm('#form')" class="btn btn-success" value="Save">
             </td>
         </tr>
     </table>

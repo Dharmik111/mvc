@@ -3,7 +3,7 @@
 <?php if ($product) : ?>
     <div class="container-fluid m-0 p-4 col justify-content-center">
         <form action="<?= $this->getUrl()->getUrl('save', 'Product\Attribute', ['productId' => $product->productId], true); ?>" method="post" id="form">
-            <input type="button" value="Save" onclick="mage.setForm();" class="btn btn-success">
+            <input type="button" value="Save" onclick="mage.resetParams().setForm('#form');" class="btn btn-success">
             <div class="col m-0 p-1">
                 <?php if (count($attributes)) : ?>
                     <?php foreach ($attributes as $key => $attribute) : ?>

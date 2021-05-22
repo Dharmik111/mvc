@@ -99,7 +99,7 @@ $shipping = $customer->getShippingAddress();
     </tr>
     <tr>
         <td>
-            <input type="button" onclick="mage.setForm();" value="Save">
+            <input type="button" onclick="mage.resetParams().setForm('#form');" value="Save">
         </td>
         <td>
             <input type="reset" value="Reset">

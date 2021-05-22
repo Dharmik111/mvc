@@ -6,8 +6,8 @@
     <table class="grid">
         <tr>
             <td colspan="5"></td>
-            <td><input type="button" onclick="mage.changeAction('<?php echo $this->getUrl()->getUrl('updateImage','Product\Media'); ?>').setForm()" name="update" value="update"></td>
-            <td><input type="button" onclick="mage.changeAction('<?php echo $this->getUrl()->getUrl('removeImage', 'Product\Media'); ?>').setForm()" name="remove" value="Remove"></td>
+            <td><input type="button" onclick="mage.changeAction('<?php echo $this->getUrl()->getUrl('updateImage','Product\Media'); ?>').resetParams().setForm('#form')" name="update" value="update"></td>
+            <td><input type="button" onclick="mage.changeAction('<?php echo $this->getUrl()->getUrl('removeImage', 'Product\Media'); ?>').resetParams().setForm('#form')" name="remove" value="Remove"></td>
         </tr>
         <tr class="gridtr">
             <th style="text-align:center" class="gridth"></th>

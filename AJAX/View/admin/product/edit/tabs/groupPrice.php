@@ -4,7 +4,7 @@ $groupPrice = $this->getGroupPrice();
 <center>
     <h1>Group Price</h1>
     <form id="form" action="#" method="POST">
-        <input type="button" class="btn btn-success" onclick="mage.changeAction('<?php echo $this->getUrl()->getUrl('groupPrice','Product\GroupPrice'); ?>').setForm()" name="save" value="UPDATE">
+        <input type="button" class="btn btn-success" onclick="mage.changeAction('<?php echo $this->getUrl()->getUrl('groupPrice','Product\GroupPrice'); ?>').resetParams().setForm('#form')" name="save" value="UPDATE">
         <table class="grid">
             <tr class="gridtr">
                 <th style="text-align:center" class="gridth">Group Id</th>

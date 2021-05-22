@@ -80,7 +80,7 @@
         <tr class="gridtr">
             <td class="gridtd"></td>
             <td class="gridtd">
-                <input type="button" onclick="mage.setForm()" value="Save">
+                <input type="button" onclick="mage.resetParams().setForm('#form')" value="Save">
             </td>
         </tr>
     </table>

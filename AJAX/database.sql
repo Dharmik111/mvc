@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2021 at 09:29 AM
+-- Generation Time: May 22, 2021 at 09:52 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -122,7 +122,6 @@ INSERT INTO `cart` (`cartId`, `customerId`, `sessionId`, `total`, `discount`, `p
 (7, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:19:02'),
 (8, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:20:33'),
 (9, 0, 0, '0', '0', 0, 0, 0, '2021-05-17 14:57:22'),
-(10, 3, 0, '0', '0', 0, 0, 0, '2021-05-18 11:33:03'),
 (12, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 11:54:28'),
 (14, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 11:55:32'),
 (15, 0, 0, '0', '0', 0, 0, 0, '2021-05-18 12:11:58'),
@@ -211,10 +210,8 @@ CREATE TABLE `cms_page` (
 --
 
 INSERT INTO `cms_page` (`pageId`, `title`, `identifier`, `content`, `status`, `createdDate`) VALUES
-(1, 'teacher', 'contact us', 'finding', 'Enable', '2021-03-09 04:42:39'),
-(43, 'facebook', 'name', 'friend', 'Enable', '2021-04-28 08:56:19'),
-(45, 'WhatsApp', 'Unique', '<p>Connect People</p>\n', 'Enable', '2021-05-12 13:22:20'),
-(46, 'Tv', 'Watching', '<p>Enjoyable</p>\n', 'Enable', '2021-05-12 13:53:43');
+(1, 'facebook', 'name', '<p>child watching movie</p>', 'Enable', '2021-05-22 06:48:09'),
+(2, 'WhatsApp', 'Unique', '<p><em><strong>Bolds</strong></em></p>', 'Enable', '2021-05-22 06:51:10');
 
 -- --------------------------------------------------------
 
@@ -238,7 +235,8 @@ CREATE TABLE `config` (
 INSERT INTO `config` (`configId`, `groupId`, `title`, `code`, `value`, `createdDate`) VALUES
 (2, 1, 'Hacker', 'Rank', 'Performance', '2021-04-29 10:35:29'),
 (3, 1, 'Job', 'Electrical', 'Checking', '2021-04-29 10:38:03'),
-(6, 3, 'Chapter1', 'Pythagoras', '3.18', '2021-05-12 19:33:02');
+(6, 3, 'Chapter1', 'Pythagoras', '3.18', '2021-05-12 19:33:02'),
+(7, 4, 's', 'ds', 'rm,dr', '2021-05-20 16:56:50');
 
 -- --------------------------------------------------------
 
@@ -259,7 +257,8 @@ CREATE TABLE `config_group` (
 INSERT INTO `config_group` (`groupId`, `name`, `createdDate`) VALUES
 (1, 'Web Designer', '2021-04-12 16:25:11'),
 (2, 'PhotoGrapher', '2021-04-12 17:19:57'),
-(3, 'Maths', '2021-05-12 19:32:09');
+(3, 'Maths', '2021-05-12 19:32:09'),
+(4, ',er,', '2021-05-20 16:56:38');
 
 -- --------------------------------------------------------
 
@@ -382,6 +381,7 @@ CREATE TABLE `order` (
 
 INSERT INTO `order` (`orderId`, `sessionId`, `customerId`, `total`, `discount`, `paymentMethodId`, `shippingMethodId`, `shippingAmount`, `createdDate`) VALUES
 (2, 0, 3, '0', '0', 1, 1, 100, '2021-05-13 10:39:53'),
+(10, 0, 3, '0', '0', 2, 1, 100, '2021-05-22 13:10:22'),
 (11, 0, 12, '0', '0', 2, 1, 100, '2021-05-18 11:33:47'),
 (13, 0, 11, '0', '0', 2, 1, 100, '2021-05-18 11:55:10');
 
@@ -414,7 +414,9 @@ INSERT INTO `orderaddress` (`orderAddressId`, `orderId`, `addressId`, `addressTy
 (3, 11, 0, 'billing', 'Europe Street No9', 'Berlight', 'cvx', 'Europe', 923, 0),
 (4, 11, 0, 'shipping', 'Europe Street No9', 'Berlight', 'cvx', 'Europe', 923, 0),
 (5, 13, 0, 'billing', 'Modhera Society', 'Ahemadabad', 'Gujarat', 'India', 380001, 0),
-(6, 13, 0, 'shipping', 'Modhera Society', 'Ahemadabad', 'Gujarat', 'India', 380001, 0);
+(6, 13, 0, 'shipping', 'Modhera Society', 'Ahemadabad', 'Gujarat', 'India', 380001, 0),
+(7, 10, 0, 'billing', 'London', 'London', 'Ukm', 'Uknn', 10, 0),
+(8, 10, 0, 'shipping', 'London', 'London', 'Ukm', 'Uknn', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -440,7 +442,8 @@ CREATE TABLE `order_item` (
 INSERT INTO `order_item` (`orderItemId`, `orderId`, `productId`, `quantity`, `basePrice`, `price`, `discount`, `createdDate`) VALUES
 (1, 2, 2, 2, 95, 190, 2, '2021-05-13 10:39:54'),
 (2, 11, 98, 1, 10000, 10000, 1000, '2021-05-18 11:33:48'),
-(3, 13, 100, 1, 60000, 60000, 2000, '2021-05-18 11:55:11');
+(3, 13, 100, 1, 60000, 60000, 2000, '2021-05-18 11:55:11'),
+(4, 10, 2, 1, 95, 95, 2, '2021-05-22 13:10:22');
 
 -- --------------------------------------------------------
 
@@ -547,7 +550,11 @@ INSERT INTO `product_group_price` (`entityId`, `productId`, `customerGroupId`, `
 (1, 2, 1, '100.00'),
 (2, 2, 3, '220.00'),
 (3, 2, 4, '330.00'),
-(4, 2, 5, '450.00');
+(4, 2, 5, '450.00'),
+(5, 103, 1, '100.00'),
+(6, 103, 3, '200.00'),
+(7, 103, 4, '300.00'),
+(8, 103, 5, '400.00');
 
 -- --------------------------------------------------------
 
@@ -783,19 +790,19 @@ ALTER TABLE `shipment`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `attribute`
 --
 ALTER TABLE `attribute`
-  MODIFY `attributeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `attributeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `attribute_option`
 --
 ALTER TABLE `attribute_option`
-  MODIFY `optionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `optionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -807,49 +814,49 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `cartaddress`
 --
 ALTER TABLE `cartaddress`
-  MODIFY `cartAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cartAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cartItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `cms_page`
 --
 ALTER TABLE `cms_page`
-  MODIFY `pageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `pageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
-  MODIFY `configId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `configId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `config_group`
 --
 ALTER TABLE `config_group`
-  MODIFY `groupId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `groupId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `customer_address`
 --
 ALTER TABLE `customer_address`
-  MODIFY `addressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `addressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
@@ -867,19 +874,19 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `orderaddress`
 --
 ALTER TABLE `orderaddress`
-  MODIFY `orderAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `orderAddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `orderItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `orderItemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `methodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `methodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -891,31 +898,31 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `productmedia`
 --
 ALTER TABLE `productmedia`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_group_price`
 --
 ALTER TABLE `product_group_price`
-  MODIFY `entityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `entityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `question_option`
 --
 ALTER TABLE `question_option`
-  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `methodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `methodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

@@ -27,6 +27,6 @@ $categoryOptions = $this->getCategoryOptions();
                                                 } ?>><?= $value; ?></option>
         <?php endforeach; ?>
     </select><br><br>
-    <button type="button" name="save" class="btn btn-warning" onclick="mage.setForm('#categoryForm');">Save</button>
+    <button type="button" name="save" class="btn btn-warning" onclick="mage.resetParams().setForm('#form')">Save</button>
 
 </form>

@@ -2,7 +2,7 @@
 <?php $options = $attribute->getOptions(); ?>
 
 <form id="form" action="<?php echo $this->getUrl()->getUrl('update','attribute\option'); ?>" method="POST">
-    <input type="button" onclick="mage.setForm()" class="btn btn-success" name="update" value="Update">
+    <input type="button" onclick="mage.resetParams().setForm('#form')" class="btn btn-success" name="update" value="Update">
     <input type="button" name="addOption" class="btn btn-primary" value="Add Option" onclick="addRow();">
     <table id='existingOption' class='grid'>
         <tbody>

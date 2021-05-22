@@ -36,7 +36,7 @@
         <tr>
             <td></td>
             <td>
-                <input type="button" onclick="mage.setForm()" value="submit" class="btn btn-success">
+                <input type="button" onclick="mage.resetParams().setForm('#form')" value="submit" class="btn btn-success">
             </td>
         </tr>
     </table>

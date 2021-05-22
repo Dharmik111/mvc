@@ -42,7 +42,7 @@ $option = $product->getStatusOption();
     </tr>
     <tr>
         <td></td>
-        <td><input type="button" onclick="mage.setForm()" value="Save" class="btn btn-primary"></td>
+        <td><input type="button" onclick="mage.resetParams().setForm('#form')" value="Save" class="btn btn-primary"></td>
     </tr>
 </table>
 </form>

@@ -32,7 +32,7 @@ $option = $customerGroup->getStatusOption();
             <td>
             </td>
             <td>
-                <input type="button" onclick="mage.setForm()" value="Submit"><br><br>
+                <input type="button" onclick="mage.resetParams().setForm('#form')" value="Submit"><br><br>
             </td>
         </tr>
     </table>

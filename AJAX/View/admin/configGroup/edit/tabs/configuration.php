@@ -2,7 +2,7 @@
 <?php $config = $configGroup->getConfig(); ?>
 
 <form id="form" action="<?php echo $this->getUrl()->getUrl('update','configgroup\config'); ?>" method="POST">
-    <input type="button" onclick="mage.setForm()" class="btn btn-success" name="update" value="Update">
+    <input type="button" onclick="mage.resetParams().setForm('#form')" class="btn btn-success" name="update" value="Update">
     <input type="button" name="addConfig" value="Add Config" class="btn btn-primary" onclick="addRow();">
     <table id='existingConfig' class='grid'>
         <tbody>

@@ -132,25 +132,25 @@ class Grid extends Template
     public function getEditUrl($row)
     {
         $url = $this->getUrl()->getUrl('editForm', null, [$row->getPrimaryKey() => $this->getKey($row)], true);
-        return "mage.setUrl('{$url}').load()";
+        return "mage.setUrl('{$url}').resetParams().load()";
     }
     
     public function getDeleteUrl($row)
     {
         $url = $this->getUrl()->getUrl('delete', null, [$row->getPrimaryKey() => $this->getKey($row)], true);
-        return "mage.setUrl('{$url}').load()";
+        return "mage.setUrl('{$url}').resetParams().load()";
     }
     
     public function addToCartUrl($row)
     {
         $url = $this->getUrl()->getUrl('addItemToCart', 'cart', [$row->getPrimaryKey() => $this->getKey($row)], true);
-        return "mage.setUrl('{$url}').load()";
+        return "mage.setUrl('{$url}').resetParams().load()";
     }
 
     public function getStatusUrl($row)
     {
         $url = $this->getUrl()->getUrl('status', null, [$row->getPrimaryKey() => $this->getKey($row)], true);
-        return "mage.setUrl('{$url}').load()";
+        return "mage.setUrl('{$url}').resetParams().load()";
     }
 
     public function getButtons()
@@ -189,7 +189,7 @@ class Grid extends Template
     public function getAddDataUrl()
     {
         $url = $this->getUrl()->getUrl('editForm', null, [], true);
-        return "mage.setUrl('{$url}').load()";
+        return "mage.setUrl('{$url}').resetParams().load()";
     }
     
     public function getFilterUrl()

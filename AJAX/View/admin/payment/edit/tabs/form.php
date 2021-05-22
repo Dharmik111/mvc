@@ -49,7 +49,7 @@ $option = $payments->getStatusOption();
             <td>
             </td>
             <td>
-                <input type='button' onclick="mage.setForm()" name='submit' value='Submit'>
+                <input type='button' onclick="mage.resetParams().setForm('#form')" name='submit' value='Submit'>
             </td>
         </tr>
     </table>
